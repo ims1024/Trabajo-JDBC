@@ -1,115 +1,257 @@
 package lsi.ubu.solucion;
 
-import java.sql.Date;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import lsi.ubu.servicios.GestionDonacionesSangreException;
+import lsi.ubu.servicios.Misc;
+import lsi.ubu.util.ExecuteScript;
+import lsi.ubu.util.PoolDeConexiones;
+
+/**
+ * GestionDonacionesSangre:
+ * Implementa la gestion de donaciones de sangre siguiendo el esqueleto proporcionado
+ */
 public class GestionDonacionesSangre {
+	
+	private static Logger logger = LoggerFactory.getLogger(GestionDonacionesSangre.class);
 
-	// Usaremos este main más adelante para probar si nuestra donación funciona
-	public static void main(String[] args) {
-		System.out.println("Aquí probaremos las donaciones luego...");
+	private static final String script_path = "sql/";
+
+	public static void main(String[] args) throws SQLException{		
+		tests();
+		System.out.println("FIN.............");
+	}
+	
+	public static void realizar_donacion(String m_NIF, int m_ID_Hospital,
+			float m_Cantidad, Date m_Fecha_Donacion) throws SQLException {
+		
+		// Comprobamos la cantidad máxima antes de hacer la conexion para ahorrar recursos por si fallara
+		if (m_Cantidad <= 0 || m_Cantidad > 0.45f) {
+			throw new GestionDonacionesSangreException(GestionDonacionesSangreException.VALOR_CANTIDAD_DONACION_INCORRECTO);
+		}
+
+		PoolDeConexiones pool = PoolDeConexiones.getInstance();
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		try {
+			con = pool.getConnection();
+			
+			// Desactivamos el autocommit para evitar problemas
+			con.setAutoCommit(false);
+			
+			// Comprobamos si existe el hospital
+			pst = con.prepareStatement("SELECT 1 FROM hospital WHERE id_hospital = ?");
+			pst.setInt(1, m_ID_Hospital);
+			rs = pst.executeQuery();
+			if (!rs.next()) {
+				throw new GestionDonacionesSangreException(GestionDonacionesSangreException.HOSPITAL_NO_EXISTE);
+			}
+			rs.close(); pst.close();
+
+			// Comprobamos la existencia del donante y si existe nos guardamos su tipo de sangre
+			pst = con.prepareStatement("SELECT id_tipo_sangre FROM donante WHERE nif = ?");
+			pst.setString(1, m_NIF);
+			rs = pst.executeQuery();
+			if (!rs.next()) {
+				throw new GestionDonacionesSangreException(GestionDonacionesSangreException.DONANTE_NO_EXISTE);
+			}
+			int idTipoSangre = rs.getInt("id_tipo_sangre");
+			rs.close(); pst.close();
+
+			// Comprobamos si han pasado minimo 15 dias de su ultima donacion
+			pst = con.prepareStatement("SELECT MAX(fecha_donacion) FROM donacion WHERE nif_donante = ?");
+			pst.setString(1, m_NIF);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				Date ultimaDonacion = rs.getDate(1);
+				if (ultimaDonacion != null) {
+					// Usamos la clase Misc  para calcular los días
+					int diasPasados = Misc.howManyDaysBetween(m_Fecha_Donacion, ultimaDonacion);
+					if (diasPasados < 15) {
+						throw new GestionDonacionesSangreException(GestionDonacionesSangreException.DONANTE_EXCEDE);
+					}
+				}
+			}
+			rs.close(); pst.close();
+
+			// Hacemos INSERT de la nueva donacion
+			String sqlInsertDonacion = "INSERT INTO donacion (id_donacion, nif_donante, cantidad, fecha_donacion) VALUES (seq_donacion.NEXTVAL, ?, ?, ?)";
+			pst = con.prepareStatement(sqlInsertDonacion);
+			pst.setString(1, m_NIF);
+			pst.setFloat(2, m_Cantidad);
+			
+			// Convertimos la java.util.Date a java.sql.Date para la base de datos
+			pst.setDate(3, new java.sql.Date(m_Fecha_Donacion.getTime()));
+			pst.executeUpdate();
+			pst.close();
+
+			// Hacemos UPDATE de la reserva del hospital
+			String sqlUpdateReserva = "UPDATE reserva_hospital SET cantidad = cantidad + ? WHERE id_hospital = ? AND id_tipo_sangre = ?";
+			pst = con.prepareStatement(sqlUpdateReserva);
+			pst.setFloat(1, m_Cantidad);
+			pst.setInt(2, m_ID_Hospital);
+			pst.setInt(3, idTipoSangre);
+			int filasAfectadas = pst.executeUpdate();
+			pst.close();
+
+			// Comprobamos si las reservas de ese tipo del hospital estaban a cero para hacer INSERT en su lugar
+			if (filasAfectadas == 0) {
+				String sqlInsertReserva = "INSERT INTO reserva_hospital (id_tipo_sangre, id_hospital, cantidad) VALUES (?, ?, ?)";
+				pst = con.prepareStatement(sqlInsertReserva);
+				pst.setInt(1, idTipoSangre);
+				pst.setInt(2, m_ID_Hospital);
+				pst.setFloat(3, m_Cantidad);
+				pst.executeUpdate();
+				pst.close();
+			}
+
+			// Si no ha saltado ninguna excepcion hacemos commit para guardar los cambios al finalizar
+			con.commit();
+			logger.info("Donación realizada con éxito para el NIF: " + m_NIF);
+
+		} catch (SQLException e) {
+			
+			// Si algo ha fallado tenemos que hacer rollback
+			if (con != null) {
+				
+				try {
+					
+					con.rollback();
+					logger.info("Rollback ejecutado correctamente.");
+					
+				} catch (SQLException ex) {
+					
+					//Si se produce error en el rollback lanzamos otra excepcion
+					logger.error("Error al hacer rollback: " + ex.getMessage());
+					
+				}
+			}
+			
+			// Avisamos de que ha ocurrido un error en la transaccion y lanzamos el error
+			logger.error("Error en la transacción de donación: " + e.getMessage());
+			throw e;		
+
+		} finally {
+			
+			// Cerramos todo en el orden inverso al que lo abrimos
+			try {
+				
+				if (rs != null) rs.close();
+				if (pst != null) pst.close();
+				if (con != null) con.close();
+				
+			} catch (SQLException e) {
+				
+				//Si se produce error al cerrar avisamos
+				logger.error("Error cerrando recursos: " + e.getMessage());
+			}
+		}
+	}
+	
+	public static void anular_traspaso(int m_ID_Tipo_Sangre, int m_ID_Hospital_Origen, int m_ID_Hospital_Destino,
+			Date m_Fecha_Traspaso) throws SQLException {
+		
+		PoolDeConexiones pool = PoolDeConexiones.getInstance();
+		Connection con = null;
+
+		try {
+			con = pool.getConnection();
+			con.setAutoCommit(false); 
+
+			// Validaciones Previas
+			// Comprobar si existe el Tipo de Sangre. Si no, lanzar TIPO_SANGRE_NO_EXISTE (código 2).
+			// Comprobar si existe el Hospital Origen. Si no, lanzar HOSPITAL_NO_EXISTE (código 3).
+			// Comprobar si existe el Hospital Destino. Si no, lanzar HOSPITAL_NO_EXISTE (código 3).
+			
+			// Buscar el traspaso
+			// SELECT cantidad FROM traspaso WHERE id_tipo_sangre = ? AND id_hospital = ? (origen) AND ...
+			// Si el campo cantidad es < 0, lanzar VALOR_CANTIDAD_TRASPASO_INCORRECTO (código 6).
+			
+			// Revertir las cantidades 
+			// UPDATE reserva_hospital: Restar la cantidad al Hospital Destino.
+			// UPDATE reserva_hospital: Sumar la cantidad al Hospital Origen.
+			
+			// Borrar el registro
+			// DELETE FROM traspaso WHERE id_hospital_origen = ... y fecha = ...
+			
+			// Confirmar
+			
+
+		} catch (SQLException e) {
+			if (con != null) con.rollback();
+			logger.error(e.getMessage());
+			throw e;		
+		} finally {
+			// Cerrar ResultSet, PreparedStatement y Connection
+		}		
+	}
+	
+	public static void consulta_traspasos(String m_Tipo_Sangre) throws SQLException {
+				
+		PoolDeConexiones pool = PoolDeConexiones.getInstance();
+		Connection con = null;
+
+		try {
+			con = pool.getConnection();
+			con.setAutoCommit(false);
+
+			// Validaciones
+			// Comprobar si el m_Tipo_Sangre existe en la tabla tipo_sangre. 
+			// Si no, lanzar TIPO_SANGRE_NO_EXISTE (código 2).
+			
+			// Consulta Compleja
+			// Escribir una SQL que una (JOIN): traspaso, hospital, reserva_hospital y tipo_sangre.
+			// Filtrar WHERE tipo_sangre.descripcion = ?
+			// Ordenar ORDER BY id_hospital_destino, fecha_traspaso.
+			
+			// Mostrar Datos
+			// Recorrer el ResultSet con rs.next()
+			// Imprimir por pantalla (o logger) la información recuperada de esas 4 tablas.
+			
+			// Confirmar
+			// con.commit();
+
+		} catch (SQLException e) {
+			if (con != null) con.rollback();
+			logger.error(e.getMessage());
+			throw e;		
+		} finally {
+			// Cerrar ResultSet, PreparedStatement y Connection
+		}		
+	}
+	
+	static public void creaTablas() {
+		ExecuteScript.run(script_path + "gestion_donaciones_sangre.sql");
 	}
 
-	//metodo para realizar las donaciones
-	public static void realizar_donacion(String m_NIF, float m_Cantidad, int m_ID_Hospital, Date m_Fecha_Donacion) throws SQLException {
+	static void tests() throws SQLException{
+		creaTablas();
 		
-		// Aquí escribiremos la lógica paso a paso
+		PoolDeConexiones pool = PoolDeConexiones.getInstance();		
 		
-		//Primero tenemos que hacer todas las validaciones
+		CallableStatement cll_reinicia=null;
+		Connection conn = null;
 		
-		
-		//Comprobar que la cantidad es valida
-		
-		
-		//Buscamos el donante con el NIF para ver si existe, y si existe guardamos su tipo de sangre
-		
-		
-		//Si todavia no hemos lanzado error buscamos la fecha de su ultima donacion y miramos que hayan pasado minimo 15 dias
-		
-		
-		//Podemos comprobar si el hospital existe
-		
-		
-		//Si todo es correcto insertmos la nueva donacion en la tabla donacion
-		
-		
-		// hacemos update en la tabla reserva_hospital para actualizar sus valores
-		
-		
-		//habria que confirmar haciendo commit
-		
-		
-		
-		//Si saltase cualquier error hariamos rollback en el catch
-		
+		try {
+			// Reinicio filas
+			conn = pool.getConnection();
+			cll_reinicia = conn.prepareCall("{call inicializa_test}");
+			cll_reinicia.execute();
+		} catch (SQLException e) {				
+			logger.error(e.getMessage());			
+		} finally {
+			if (cll_reinicia!=null) cll_reinicia.close();
+			if (conn!=null) conn.close();
+		}			
 	}
-	
-	
-	public static void anular_traspaso(int m_ID_Tipo_Sangre, int m_ID_Hospital_Origen, int m_ID_Hospital_Destino, Date m_Fecha_Traspaso) throws SQLException{
-		
-		//Validaciones Previas
-		
-		
-		//Comprobar que el Tipo de Sangre existe 
-		
-		
-		//Comprobar que el Hospital Origen existe
-		
-		
-		
-		//Comprobar que el Hospital Destino existe
-		
-		
-		//Buscar el traspaso en la tabla traspaso con los 4 datos y si existe leemos y guardamos su cantidad
-		
-		
-		//comprobar si la cantidad es mayor que cero
-		
-		
-		//si todo es correcto empezamos las modificaciones
-		
-		
-		//restar la cantidad a la tabla del hospital origen y sumarsela al de destino
-		
-		
-		//delete del registro de la tabla traspaso
-		
-		
-		//si todo esta bien hacemos commit 
-		
-		
-		//si saltase alguna excepcion hacemos rollback y capturamos en el catch
-		
-	}
-	
-	public static void consulta_traspasos(String m_Tipo_Sangre) throws SQLException{
-		
-		//validaciones
-		
-		
-		//buscar en tipo_sangre si la descripcion pasada existe
-		
-		
-		
-		//consultas
-		
-		
-		//consulta que haga join de las 4 tablas implicadas con el where del tipo de sangre que buscamos
-		
-		
-		//ejecutar la consulta con executeQuery para tener el resultado de la consulta
-		
-		
-		//recorrer el resultset con un while 
-		
-		
-		//dentro del while imprimir los datos de la consulta
-		
-		
-		//hacemos rollback si algo sale mal por peticion del enunciado
-		//si todo va bien se hace commit
-		
-	}
-	
-	
 }
