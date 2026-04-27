@@ -159,76 +159,139 @@ public class GestionDonacionesSangre {
 	}
 	
 	public static void anular_traspaso(int m_ID_Tipo_Sangre, int m_ID_Hospital_Origen, int m_ID_Hospital_Destino,
-			Date m_Fecha_Traspaso) throws SQLException {
-		
-		PoolDeConexiones pool = PoolDeConexiones.getInstance();
-		Connection con = null;
+        Date m_Fecha_Traspaso) throws SQLException {
+    
+    PoolDeConexiones pool = PoolDeConexiones.getInstance();
+    Connection con = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
-		try {
-			con = pool.getConnection();
-			con.setAutoCommit(false); 
+    try {
+        con = pool.getConnection();
+        con.setAutoCommit(false); 
 
-			// Validaciones Previas
-			// Comprobar si existe el Tipo de Sangre. Si no, lanzar TIPO_SANGRE_NO_EXISTE (código 2).
-			// Comprobar si existe el Hospital Origen. Si no, lanzar HOSPITAL_NO_EXISTE (código 3).
-			// Comprobar si existe el Hospital Destino. Si no, lanzar HOSPITAL_NO_EXISTE (código 3).
-			
-			// Buscar el traspaso
-			// SELECT cantidad FROM traspaso WHERE id_tipo_sangre = ? AND id_hospital = ? (origen) AND ...
-			// Si el campo cantidad es < 0, lanzar VALOR_CANTIDAD_TRASPASO_INCORRECTO (código 6).
-			
-			// Revertir las cantidades 
-			// UPDATE reserva_hospital: Restar la cantidad al Hospital Destino.
-			// UPDATE reserva_hospital: Sumar la cantidad al Hospital Origen.
-			
-			// Borrar el registro
-			// DELETE FROM traspaso WHERE id_hospital_origen = ... y fecha = ...
-			
-			// Confirmar
-			
+        // ---------------------------
+        // VALIDACIONES
+        // ---------------------------
 
-		} catch (SQLException e) {
-			if (con != null) con.rollback();
-			logger.error(e.getMessage());
-			throw e;		
-		} finally {
-			// Cerrar ResultSet, PreparedStatement y Connection
-		}		
-	}
-	
-	public static void consulta_traspasos(String m_Tipo_Sangre) throws SQLException {
-				
-		PoolDeConexiones pool = PoolDeConexiones.getInstance();
-		Connection con = null;
+        // Tipo de sangre existe
+        pst = con.prepareStatement("SELECT 1 FROM tipo_sangre WHERE id_tipo_sangre = ?");
+        pst.setInt(1, m_ID_Tipo_Sangre);
+        rs = pst.executeQuery();
+        if (!rs.next()) {
+            throw new GestionDonacionesSangreException(GestionDonacionesSangreException.TIPO_SANGRE_NO_EXISTE);
+        }
+        rs.close(); pst.close();
 
-		try {
-			con = pool.getConnection();
-			con.setAutoCommit(false);
+        // Hospital origen existe
+        pst = con.prepareStatement("SELECT 1 FROM hospital WHERE id_hospital = ?");
+        pst.setInt(1, m_ID_Hospital_Origen);
+        rs = pst.executeQuery();
+        if (!rs.next()) {
+            throw new GestionDonacionesSangreException(GestionDonacionesSangreException.HOSPITAL_NO_EXISTE);
+        }
+        rs.close(); pst.close();
 
-			// Validaciones
-			// Comprobar si el m_Tipo_Sangre existe en la tabla tipo_sangre. 
-			// Si no, lanzar TIPO_SANGRE_NO_EXISTE (código 2).
-			
-			// Consulta Compleja
-			// Escribir una SQL que una (JOIN): traspaso, hospital, reserva_hospital y tipo_sangre.
-			// Filtrar WHERE tipo_sangre.descripcion = ?
-			// Ordenar ORDER BY id_hospital_destino, fecha_traspaso.
-			
-			// Mostrar Datos
-			// Recorrer el ResultSet con rs.next()
-			// Imprimir por pantalla (o logger) la información recuperada de esas 4 tablas.
-			
-			// Confirmar
-			// con.commit();
+        // Hospital destino existe
+        pst = con.prepareStatement("SELECT 1 FROM hospital WHERE id_hospital = ?");
+        pst.setInt(1, m_ID_Hospital_Destino);
+        rs = pst.executeQuery();
+        if (!rs.next()) {
+            throw new GestionDonacionesSangreException(GestionDonacionesSangreException.HOSPITAL_NO_EXISTE);
+        }
+        rs.close(); pst.close();
 
-		} catch (SQLException e) {
-			if (con != null) con.rollback();
-			logger.error(e.getMessage());
-			throw e;		
-		} finally {
-			// Cerrar ResultSet, PreparedStatement y Connection
-		}		
-	}
+        // ---------------------------
+        // BUSCAR TRASPASO
+        // ---------------------------
+        String sql = "SELECT cantidad FROM traspaso " +
+                     "WHERE id_tipo_sangre = ? AND id_hospital_origen = ? " +
+                     "AND id_hospital_destino = ? AND fecha_traspaso = ?";
+
+        pst = con.prepareStatement(sql);
+        pst.setInt(1, m_ID_Tipo_Sangre);
+        pst.setInt(2, m_ID_Hospital_Origen);
+        pst.setInt(3, m_ID_Hospital_Destino);
+        pst.setDate(4, new java.sql.Date(m_Fecha_Traspaso.getTime()));
+
+        rs = pst.executeQuery();
+
+        if (!rs.next()) {
+            throw new GestionDonacionesSangreException(GestionDonacionesSangreException.TRASPASO_NO_EXISTE);
+        }
+
+        float cantidad = rs.getFloat("cantidad");
+
+        if (cantidad < 0) {
+            throw new GestionDonacionesSangreException(GestionDonacionesSangreException.VALOR_CANTIDAD_TRASPASO_INCORRECTO);
+        }
+
+        rs.close(); pst.close();
+
+        // ---------------------------
+        // REVERTIR MOVIMIENTO
+        // ---------------------------
+
+        // Restar al destino
+        pst = con.prepareStatement(
+            "UPDATE reserva_hospital SET cantidad = cantidad - ? " +
+            "WHERE id_tipo_sangre = ? AND id_hospital = ?"
+        );
+        pst.setFloat(1, cantidad);
+        pst.setInt(2, m_ID_Tipo_Sangre);
+        pst.setInt(3, m_ID_Hospital_Destino);
+        pst.executeUpdate();
+        pst.close();
+
+        // Sumar al origen
+        pst = con.prepareStatement(
+            "UPDATE reserva_hospital SET cantidad = cantidad + ? " +
+            "WHERE id_tipo_sangre = ? AND id_hospital = ?"
+        );
+        pst.setFloat(1, cantidad);
+        pst.setInt(2, m_ID_Tipo_Sangre);
+        pst.setInt(3, m_ID_Hospital_Origen);
+        pst.executeUpdate();
+        pst.close();
+
+        // ---------------------------
+        // BORRAR TRASPASO
+        // ---------------------------
+        pst = con.prepareStatement(
+            "DELETE FROM traspaso WHERE id_tipo_sangre = ? AND id_hospital_origen = ? " +
+            "AND id_hospital_destino = ? AND fecha_traspaso = ?"
+        );
+        pst.setInt(1, m_ID_Tipo_Sangre);
+        pst.setInt(2, m_ID_Hospital_Origen);
+        pst.setInt(3, m_ID_Hospital_Destino);
+        pst.setDate(4, new java.sql.Date(m_Fecha_Traspaso.getTime()));
+        pst.executeUpdate();
+        pst.close();
+
+        con.commit();
+        logger.info("Traspaso anulado correctamente.");
+
+    } catch (SQLException e) {
+        if (con != null) {
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                logger.error("Error en rollback: " + ex.getMessage());
+            }
+        }
+        logger.error("Error en anular_traspaso: " + e.getMessage());
+        throw e;
+
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            logger.error("Error cerrando recursos: " + e.getMessage());
+        }
+    }
+}
 	
 	static public void creaTablas() {
 		ExecuteScript.run(script_path + "gestion_donaciones_sangre.sql");
