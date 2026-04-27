@@ -1,0 +1,406 @@
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:30)]2026-04-27 17:10:33.550 [main] GestionDonacionesSangre - --- PREPARANDO EL ENTORNO ---
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.613 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.613 [main] ExecuteScript - SQL*Plus: Release 11.2.0.2.0 Production on Lun Abr 27 17:10:33 2026
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.613 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.614 [main] ExecuteScript - Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.614 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.639 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.639 [main] ExecuteScript - Connected to:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.639 [main] ExecuteScript - Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.640 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.642 [main] ExecuteScript - drop table hospital cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.642 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.642 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.642 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.642 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.643 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.643 [main] ExecuteScript - drop table tipo_sangre cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.643 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.643 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript - drop table reserva_hospital cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.646 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.647 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.647 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript - drop table donante cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.648 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript - drop table donacion cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.649 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - drop table traspaso cascade constraints
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript -            *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - ORA-00942: table or view does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - drop sequence seq_hospital
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript -               *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.650 [main] ExecuteScript - ORA-02289: sequence does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.651 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.651 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.651 [main] ExecuteScript - drop sequence seq_tipo_sangre
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.651 [main] ExecuteScript -               *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.651 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript - ORA-02289: sequence does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript - drop sequence seq_donacion
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript -               *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.652 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - ORA-02289: sequence does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - drop sequence seq_traspaso
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript -               *
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - ERROR at line 1:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - ORA-02289: sequence does not exist
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.653 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.654 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.654 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.665 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.666 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.666 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.669 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.669 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.669 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.675 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.675 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.675 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.684 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.684 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.684 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.694 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.694 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.694 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.696 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.697 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.697 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.707 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.707 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.707 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.708 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.709 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.709 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.723 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.723 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.723 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.787 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.787 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.787 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.836 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.836 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.836 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:10:33.837 [main] ExecuteScript - Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:10:34.476 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:10:34.477 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:33)]2026-04-27 17:10:34.616 [main] GestionDonacionesSangre - Base de datos reseteada con éxito.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:35)]2026-04-27 17:10:34.616 [main] GestionDonacionesSangre - --- INICIANDO BATERÍA DE PRUEBAS ---
+INFO : [lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:16)]2026-04-27 17:10:34.617 [main] TestDonacionesSangre - Comenzando ejecución de tests...
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:25)]2026-04-27 17:10:34.617 [main] TestDonacionesSangre - Ejecutando testRealizarDonacion_OK...
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:10:34.617 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:10:34.617 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+ERROR: [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:65)]2026-04-27 17:10:34.662 [main] GestionDonacionesSangreException - Donante inexistente
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - java.base/java.lang.Thread.getStackTrace(Thread.java:2450)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:68)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:79)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:31)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:18)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:10:34.663 [main] GestionDonacionesSangreException - lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:37)
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:147)]2026-04-27 17:10:34.666 [main] GestionDonacionesSangre - Rollback ejecutado correctamente.
+ERROR: [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:158)]2026-04-27 17:10:34.667 [main] GestionDonacionesSangre - Error en la transacción de donación: null
+ERROR: [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:36)]2026-04-27 17:10:34.668 [main] TestDonacionesSangre - -> FALLO: El testRealizarDonacion_OK ha lanzado una excepción inesperada: null
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:39)]2026-04-27 17:10:34.668 [main] GestionDonacionesSangre - FIN.............
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:30)]2026-04-27 17:11:50.816 [main] GestionDonacionesSangre - --- PREPARANDO EL ENTORNO ---
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.844 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.844 [main] ExecuteScript - SQL*Plus: Release 11.2.0.2.0 Production on Lun Abr 27 17:11:50 2026
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.844 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.844 [main] ExecuteScript - Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.845 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.859 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.860 [main] ExecuteScript - Connected to:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.860 [main] ExecuteScript - Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.860 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.885 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.885 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.885 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.894 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.894 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.894 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.906 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.906 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.906 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.971 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.972 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.972 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.985 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.985 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:50.985 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.000 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.001 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.001 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.004 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.005 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.005 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.007 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.008 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.008 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.010 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.011 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.011 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.013 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.014 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.014 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.019 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.019 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.019 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.028 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.028 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.028 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.031 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.032 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.032 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.037 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.038 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.038 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.046 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.046 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.046 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.124 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.125 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.125 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.128 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.129 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.129 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.216 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.216 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.216 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.218 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.219 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.219 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.305 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.305 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.306 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.307 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.308 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.308 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.333 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.333 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.333 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:11:51.334 [main] ExecuteScript - Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:11:51.860 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:11:51.862 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:33)]2026-04-27 17:11:51.988 [main] GestionDonacionesSangre - Base de datos reseteada con éxito.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:35)]2026-04-27 17:11:51.988 [main] GestionDonacionesSangre - --- INICIANDO BATERÍA DE PRUEBAS ---
+INFO : [lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:16)]2026-04-27 17:11:51.989 [main] TestDonacionesSangre - Comenzando ejecución de tests...
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:25)]2026-04-27 17:11:51.989 [main] TestDonacionesSangre - Ejecutando testRealizarDonacion_OK...
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:11:51.989 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:11:51.989 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:137)]2026-04-27 17:11:52.046 [main] GestionDonacionesSangre - Donación realizada con éxito para el NIF: 12345678A
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:33)]2026-04-27 17:11:52.046 [main] TestDonacionesSangre - -> EXITO: El testRealizarDonacion_OK ha funcionado sin lanzar excepciones.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:39)]2026-04-27 17:11:52.046 [main] GestionDonacionesSangre - FIN.............
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:30)]2026-04-27 17:13:02.812 [main] GestionDonacionesSangre - --- PREPARANDO EL ENTORNO ---
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.842 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.842 [main] ExecuteScript - SQL*Plus: Release 11.2.0.2.0 Production on Lun Abr 27 17:13:02 2026
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.842 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.842 [main] ExecuteScript - Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.842 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.856 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.856 [main] ExecuteScript - Connected to:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.856 [main] ExecuteScript - Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.857 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.874 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.874 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.874 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.885 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.885 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.885 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.895 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.895 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.895 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.954 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.954 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.954 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.964 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.964 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:02.964 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.014 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.014 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.016 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.017 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.017 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.018 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.020 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.020 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.021 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.023 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.023 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.024 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.026 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.026 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.026 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.028 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.029 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.029 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.036 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.036 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.036 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.038 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.038 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.039 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.044 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.045 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.045 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.051 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.052 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.052 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.153 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.153 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.153 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.156 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.157 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.157 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.249 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.249 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.249 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.251 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.251 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.251 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.355 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.355 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.355 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.357 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.357 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.357 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.376 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.377 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.377 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:13:03.377 [main] ExecuteScript - Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:13:03.891 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:13:03.893 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:33)]2026-04-27 17:13:04.026 [main] GestionDonacionesSangre - Base de datos reseteada con éxito.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:35)]2026-04-27 17:13:04.026 [main] GestionDonacionesSangre - --- INICIANDO BATERÍA DE PRUEBAS ---
+INFO : [lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:16)]2026-04-27 17:13:04.026 [main] TestDonacionesSangre - Comenzando ejecución de tests...
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:25)]2026-04-27 17:13:04.026 [main] TestDonacionesSangre - Ejecutando testRealizarDonacion_OK...
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:13:04.027 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:13:04.027 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+ERROR: [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:65)]2026-04-27 17:13:04.068 [main] GestionDonacionesSangreException - Donante inexistente
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - java.base/java.lang.Thread.getStackTrace(Thread.java:2450)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:68)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:79)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:31)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:18)
+INFO : [lsi.ubu.servicios.GestionDonacionesSangreException.<init>(GestionDonacionesSangreException.java:69)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangreException - lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:37)
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:147)]2026-04-27 17:13:04.071 [main] GestionDonacionesSangre - Rollback ejecutado correctamente.
+ERROR: [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:158)]2026-04-27 17:13:04.072 [main] GestionDonacionesSangre - Error en la transacción de donación: null
+ERROR: [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:36)]2026-04-27 17:13:04.074 [main] TestDonacionesSangre - -> FALLO: El testRealizarDonacion_OK ha lanzado una excepción inesperada: null
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:39)]2026-04-27 17:13:04.075 [main] GestionDonacionesSangre - FIN.............
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:30)]2026-04-27 17:16:19.280 [main] GestionDonacionesSangre - --- PREPARANDO EL ENTORNO ---
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.314 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.315 [main] ExecuteScript - SQL*Plus: Release 11.2.0.2.0 Production on Lun Abr 27 17:16:19 2026
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.315 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.316 [main] ExecuteScript - Copyright (c) 1982, 2011, Oracle.  All rights reserved.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.316 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.339 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.339 [main] ExecuteScript - Connected to:
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.339 [main] ExecuteScript - Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.339 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.360 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.360 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.360 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.371 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.371 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.371 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.411 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.412 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.412 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.476 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.476 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.476 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.498 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.498 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.499 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.508 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.509 [main] ExecuteScript - Table dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.509 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.511 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.511 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.511 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.513 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.514 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.514 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.516 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.516 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.516 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.520 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.520 [main] ExecuteScript - Sequence dropped.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.521 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.522 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.523 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.523 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.529 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.529 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.529 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.531 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.531 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.531 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.535 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.535 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.535 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.542 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.542 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.542 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.633 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.633 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.633 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.636 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.636 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.636 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.736 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.737 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.737 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.742 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.742 [main] ExecuteScript - Sequence created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.742 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.824 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.824 [main] ExecuteScript - Table created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.824 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.825 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.826 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.826 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.850 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.850 [main] ExecuteScript - Procedure created.
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.850 [main] ExecuteScript - 
+DEBUG: [lsi.ubu.util.ExecuteScript.run(ExecuteScript.java:59)]2026-04-27 17:16:19.850 [main] ExecuteScript - Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:16:20.320 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:16:20.322 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:33)]2026-04-27 17:16:20.438 [main] GestionDonacionesSangre - Base de datos reseteada con éxito.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:35)]2026-04-27 17:16:20.438 [main] GestionDonacionesSangre - --- INICIANDO BATERÍA DE PRUEBAS ---
+INFO : [lsi.ubu.tests.TestDonacionesSangre.ejecutarTodosLosTests(TestDonacionesSangre.java:16)]2026-04-27 17:16:20.440 [main] TestDonacionesSangre - Comenzando ejecución de tests...
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:25)]2026-04-27 17:16:20.440 [main] TestDonacionesSangre - Ejecutando testRealizarDonacion_OK...
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:109)]2026-04-27 17:16:20.441 [main] PoolDeConexiones - Activacion de Autocommit=false
+INFO : [lsi.ubu.util.PoolDeConexiones.getConnection(PoolDeConexiones.java:117)]2026-04-27 17:16:20.441 [main] PoolDeConexiones - Activacion de Autocommit=false
+Nivel de Aislamiento=TRANSACTION_READ_COMMITTED
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.realizar_donacion(GestionDonacionesSangre.java:137)]2026-04-27 17:16:20.495 [main] GestionDonacionesSangre - Donación realizada con éxito para el NIF: 12345678A
+INFO : [lsi.ubu.tests.TestDonacionesSangre.testRealizarDonacion_OK(TestDonacionesSangre.java:33)]2026-04-27 17:16:20.495 [main] TestDonacionesSangre - -> EXITO: El testRealizarDonacion_OK ha funcionado sin lanzar excepciones.
+INFO : [lsi.ubu.solucion.GestionDonacionesSangre.main(GestionDonacionesSangre.java:39)]2026-04-27 17:16:20.495 [main] GestionDonacionesSangre - FIN.............
