@@ -292,6 +292,87 @@ public class GestionDonacionesSangre {
         }
     }
 }
+public static void consulta_traspasos(String m_Tipo_Sangre) throws SQLException {
+			
+	PoolDeConexiones pool = PoolDeConexiones.getInstance();
+	Connection con = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+
+	try {
+		con = pool.getConnection();
+		con.setAutoCommit(false);
+
+		// ---------------------------
+		// VALIDACIÓN: tipo de sangre existe
+		// ---------------------------
+		String sqlValidacion = "SELECT 1 FROM tipo_sangre WHERE descripcion = ?";
+		pst = con.prepareStatement(sqlValidacion);
+		pst.setString(1, m_Tipo_Sangre);
+		rs = pst.executeQuery();
+
+		if (!rs.next()) {
+			throw new GestionDonacionesSangreException(
+				GestionDonacionesSangreException.TIPO_SANGRE_NO_EXISTE);
+		}
+
+		rs.close();
+		pst.close();
+
+		// ---------------------------
+		// CONSULTA TRASPASOS
+		// ---------------------------
+		String sql = "SELECT t.id_traspaso, ts.descripcion, " +
+		             "ho.nombre AS hospital_origen, hd.nombre AS hospital_destino, " +
+		             "t.cantidad, t.fecha_traspaso, rh.cantidad AS reserva_destino " +
+		             "FROM traspaso t " +
+		             "JOIN tipo_sangre ts ON t.id_tipo_sangre = ts.id_tipo_sangre " +
+		             "JOIN hospital ho ON t.id_hospital_origen = ho.id_hospital " +
+		             "JOIN hospital hd ON t.id_hospital_destino = hd.id_hospital " +
+		             "JOIN reserva_hospital rh ON rh.id_hospital = t.id_hospital_destino " +
+		             "AND rh.id_tipo_sangre = t.id_tipo_sangre " +
+		             "WHERE ts.descripcion = ? " +
+		             "ORDER BY t.id_hospital_destino, t.fecha_traspaso";
+
+		pst = con.prepareStatement(sql);
+		pst.setString(1, m_Tipo_Sangre);
+		rs = pst.executeQuery();
+
+		// ---------------------------
+		// MOSTRAR RESULTADOS
+		// ---------------------------
+		while (rs.next()) {
+			logger.info(
+				"ID Traspaso: " + rs.getInt("id_traspaso") +
+				", Tipo: " + rs.getString("descripcion") +
+				", Origen: " + rs.getString("hospital_origen") +
+				", Destino: " + rs.getString("hospital_destino") +
+				", Cantidad: " + rs.getFloat("cantidad") +
+				", Fecha: " + rs.getDate("fecha_traspaso") +
+				", Reserva Destino: " + rs.getFloat("reserva_destino")
+			);
+		}
+
+		// ---------------------------
+		// COMMIT
+		// ---------------------------
+		con.commit();
+
+	} catch (SQLException e) {
+		if (con != null) con.rollback();
+		logger.error(e.getMessage());
+		throw e;		
+
+	} finally {
+		try {
+			if (rs != null) rs.close();
+			if (pst != null) pst.close();
+			if (con != null) con.close();
+		} catch (SQLException e) {
+			logger.error("Error cerrando recursos: " + e.getMessage());
+		}
+	}		
+}
 	
 	static public void creaTablas() {
 		ExecuteScript.run(script_path + "gestion_donaciones_sangre.sql");
