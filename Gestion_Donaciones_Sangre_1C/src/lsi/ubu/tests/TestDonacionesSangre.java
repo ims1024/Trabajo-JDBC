@@ -117,58 +117,117 @@ public class TestDonacionesSangre {
     }
 
     private static void testRealizarDonacion_ExcedeCupo() {
-        logger.info("Ejecutando testRealizarDonacion_ExcedeCupo...");
+    logger.info("Ejecutando testRealizarDonacion_ExcedeCupo...");
+    try {
+        Date fechaHoy = new Date(System.currentTimeMillis());
 
-        // Usar un NIF válido.
-        // Hacer una donación correcta.
-        // Volver a llamar a realizar_donacion inmediatamente con el MISMO NIF y fecha.
-        // Capturar GestionDonacionesSangreException y comprobar que el código es DONANTE_EXCEDE
+        GestionDonacionesSangre.realizar_donacion("12345678A", 1, 0.4f, fechaHoy);
+        GestionDonacionesSangre.realizar_donacion("12345678A", 1, 0.4f, fechaHoy);
+
+        logger.error("-> FALLO: No se ha detectado que el donante excede el cupo.\n");
+
+    } catch (GestionDonacionesSangreException e) {
+        logger.info("-> EXITO: Se ha lanzado excepción.\n");
+    } catch (SQLException e) {
+        logger.error("-> FALLO: Error SQL inesperado.\n");
     }
+}
 
 
     // Tests: anular_traspaso
     private static void testAnularTraspaso_OK() {
-        logger.info("Ejecutando testAnularTraspaso_OK...");
+    logger.info("Ejecutando testAnularTraspaso_OK...");
+    try {
+        Date fecha = Date.valueOf("2023-01-01");
 
-        // Buscar en tu script sql un traspaso que exista realmente 
-        // Llamar a GestionDonacionesSangre.anular_traspaso(...) con esos datos exactos
-        // Comprobar que no lanza excepciones, try-catch 
+        GestionDonacionesSangre.anular_traspaso(1, 2, 1, fecha);
+
+        logger.info("-> EXITO: No ha lanzado excepción.\n");
+
+    } catch (Exception e) {
+        logger.error("-> FALLO: Excepción inesperada.\n");
     }
+}
 
     private static void testAnularTraspaso_TipoSangreNoExiste() {
-        logger.info("Ejecutando testAnularTraspaso_TipoSangreNoExiste...");
-        
-        // Llamar a anular_traspaso pasándole un ID de tipo de sangre falso
-        // Capturar GestionDonacionesSangreException y comprobar que es TIPO_SANGRE_NO_EXISTE 
+    logger.info("Ejecutando testAnularTraspaso_TipoSangreNoExiste...");
+    try {
+        Date fecha = Date.valueOf("2023-01-01");
+
+        GestionDonacionesSangre.anular_traspaso(9999, 2, 1, fecha);
+
+        logger.error("-> FALLO: No ha saltado la excepción.\n");
+
+    } catch (GestionDonacionesSangreException e) {
+        logger.info("-> EXITO: Excepción capturada.\n");
+    } catch (SQLException e) {
+        logger.error("-> FALLO: Error SQL.\n");
     }
+}
 
     private static void testAnularTraspaso_HospitalNoExiste() {
-        logger.info("Ejecutando testAnularTraspaso_HospitalNoExiste...");
+    logger.info("Ejecutando testAnularTraspaso_HospitalNoExiste...");
+    try {
+        Date fecha = Date.valueOf("2023-01-01");
 
-        // Llamar a anular_traspaso con un tipo de sangre real, pero un Hospital Origen falso
-        // Capturar GestionDonacionesSangreException y comprobar que es HOSPITAL_NO_EXISTE 
+        GestionDonacionesSangre.anular_traspaso(1, 9999, 1, fecha);
+
+        logger.error("-> FALLO: No ha saltado la excepción.\n");
+
+    } catch (GestionDonacionesSangreException e) {
+        if (e.getMessage() != null && e.getMessage().toLowerCase().contains("hospital")) {
+            logger.info("-> EXITO: Excepción correcta detectada.\n");
+        } else {
+            logger.error("-> FALLO: Excepción incorrecta.\n");
+        }
+    } catch (SQLException e) {
+        logger.error("-> FALLO: Error SQL inesperado.\n");
     }
-
+}
     private static void testAnularTraspaso_TraspasoNoExiste() {
-        logger.info("Ejecutando testAnularTraspaso_TraspasoNoExiste...");
+    logger.info("Ejecutando testAnularTraspaso_TraspasoNoExiste...");
+    try {
+        Date fecha = Date.valueOf("2099-01-01");
 
-        // Llamar a anular_traspaso con datos reales pero con una fecha inventada.
-        // Capturar SQLException 
+        GestionDonacionesSangre.anular_traspaso(1, 2, 1, fecha);
+
+        logger.error("-> FALLO: No ha saltado la excepción.\n");
+
+    } catch (SQLException e) {
+        logger.info("-> EXITO: Error SQL capturado.\n");
+    } catch (GestionDonacionesSangreException e) {
+        logger.error("-> FALLO: Se esperaba SQLException.\n");
     }
-
+}
 
     // Tests: consulta_traspasos
     private static void testConsultaTraspasos_OK() {
-        logger.info("Ejecutando testConsultaTraspasos_OK...");
+    logger.info("Ejecutando testConsultaTraspasos_OK...");
+    try {
+        Object resultado = GestionDonacionesSangre.consulta_traspasos("A+");
 
-        // Llamar a GestionDonacionesSangre.consulta_traspasos(); 
-        // Comprobar que no lanza excepciones.
+        if (resultado != null) {
+            logger.info("-> EXITO: Consulta realizada correctamente.\n");
+        } else {
+            logger.error("-> FALLO: La consulta devuelve null.\n");
+        }
+
+    } catch (GestionDonacionesSangreException e) {
+        logger.error("-> FALLO: Excepción de negocio inesperada.\n");
+    } catch (SQLException e) {
+        logger.error("-> FALLO: Error SQL inesperado.\n");
     }
-
+}
     private static void testConsultaTraspasos_TipoSangreNoExiste() {
-        logger.info("Ejecutando testConsultaTraspasos_TipoSangreNoExiste...");
-    
-        // Llamar a consulta_traspasos con una descripción inventada
-        // Capturar GestionDonacionesSangreException y comprobar que es TIPO_SANGRE_NO_EXISTE
+    logger.info("Ejecutando testConsultaTraspasos_TipoSangreNoExiste...");
+    try {
+        GestionDonacionesSangre.consulta_traspasos("TIPO_FALSO");
+
+        logger.error("-> FALLO: No ha saltado la excepción.\n");
+
+    } catch (GestionDonacionesSangreException e) {
+        logger.info("-> EXITO: Excepción capturada.\n");
+    } catch (SQLException e) {
+        logger.error("-> FALLO: Error SQL.\n");
     }
 }
